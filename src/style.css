@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #eff6ff;
+  --secondary: #7c3aed;
+  --background: #f4f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --text-secondary: #64748b;
+  --border: #e5e7eb;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.08), transparent 25%),
+    radial-gradient(circle at 90% 20%, rgba(124, 58, 237, 0.07), transparent 25%),
+    var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1150px, 90%);
+  margin: 0 auto;
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.18), transparent 20%),
+    radial-gradient(circle at 10% 100%, rgba(124, 58, 237, 0.35), transparent 30%),
+    linear-gradient(135deg, #1d4ed8, #2563eb 55%, #4f46e5);
+
+  color: white;
+  padding: 55px 0 65px;
+  margin-bottom: 45px;
+
+  box-shadow: 0 10px 35px rgba(37, 99, 235, 0.18);
+}
+
+/* Formas decorativas do header */
+
+.header::before {
+  content: '';
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  right: -100px;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  left: 40%;
+  bottom: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+
+  margin-bottom: 12px;
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  max-width: 550px;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h2 {
+  position: relative;
+
+  font-size: 28px;
+  letter-spacing: -0.5px;
+
+  margin-bottom: 28px;
+}
+
+h2::after {
+  content: '';
+
+  display: block;
+
+  width: 45px;
+  height: 4px;
+
+  margin-top: 9px;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+}
+
+section {
+  margin-bottom: 45px;
+}
+
+#teams-section,
+#players-section {
+  margin-top: 20px;
+}
+
+#leagues-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(270px, 1fr));
+
+  gap: 22px;
+}
+
+.league-card {
+  position: relative;
+  overflow: hidden;
+
+  background: var(--card);
+
+  padding: 28px;
+
+  border: 1px solid rgba(229, 231, 235, 0.8);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 4px 10px rgba(15, 23, 42, 0.03),
+    0 15px 35px rgba(15, 23, 42, 0.05);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.league-card::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+}
+
+.league-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(37, 99, 235, 0.2);
+
+  box-shadow:
+    0 12px 25px rgba(37, 99, 235, 0.08),
+    0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.league-card h3 {
+  font-size: 19px;
+
+  margin-bottom: 10px;
+
+  color: var(--text);
+}
+
+.league-card p {
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  margin-bottom: 22px;
+}
+
+.league-card button,
+#back-to-leagues-button,
+#back-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: none;
+
+  padding: 11px 18px;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  color: white;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow:
+    0 5px 12px rgba(37, 99, 235, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.league-card button:hover,
+#back-to-leagues-button:hover,
+#back-button:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(1.05);
+
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.3);
+}
+
+.league-card button:active,
+#back-to-leagues-button:active,
+#back-button:active {
+  transform: translateY(0);
+}
+
+#teams-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(205px, 1fr));
+
+  gap: 22px;
+}
+
+.team-card {
+  position: relative;
+
+  background: var(--card);
+
+  padding: 28px 20px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.team-card::after {
+  content: 'Ver jogadores →';
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 13px;
+
+  transform:
+    translateX(-50%)
+    translateY(8px);
+
+  opacity: 0;
+
+  color: var(--primary);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(37, 99, 235, 0.3);
+
+  box-shadow:
+    0 12px 25px rgba(37, 99, 235, 0.1),
+    0 20px 35px rgba(15, 23, 42, 0.06);
+}
+
+.team-card:hover::after {
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+.team-card img {
+  width: 115px;
+  height: 115px;
+
+  object-fit: contain;
+
+  margin-bottom: 18px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.team-card:hover img {
+  transform: scale(1.08);
+}
+
+.team-card h3 {
+  font-size: 17px;
+
+  margin-bottom: 7px;
+}
+
+.team-card p {
+  color: var(--text-secondary);
+
+  font-size: 13px;
+}
+
+#players-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(230px, 1fr));
+
+  gap: 22px;
+}
+
+.player-card {
+  position: relative;
+
+  background: var(--card);
+
+  padding: 24px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 12px 25px rgba(15, 23, 42, 0.09);
+}
+
+.player-card h3 {
+  font-size: 17px;
+
+  margin-bottom: 15px;
+}
+
+.player-card p {
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  margin-bottom: 7px;
+}
+
+#back-to-leagues-button,
+#back-button {
+  margin-bottom: 25px;
+
+  background: white;
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+}
+
+#back-to-leagues-button:hover,
+#back-button:hover {
+  color: var(--primary);
+
+  border-color: rgba(37, 99, 235, 0.25);
+
+  background: var(--primary-light);
+
+  box-shadow:
+    0 6px 15px rgba(37, 99, 235, 0.08);
+}
+
+#teams-section {
+  display: none;
+}
+
+#players-section {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 42px 0 50px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  #leagues-container,
+  #teams-container,
+  #players-container {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(220px, 1fr)
+    );
+  }
+}
+
+@media (max-width: 500px) {
+
+  .container {
+    width: 92%;
+  }
+
+  .header {
+    padding: 35px 0 42px;
+  }
+
+  .header h1 {
+    font-size: 27px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+
+  #leagues-container,
+  #teams-container,
+  #players-container {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card {
+    padding: 25px 20px;
+  }
+
+  .team-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
